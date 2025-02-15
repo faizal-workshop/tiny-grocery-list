@@ -2,11 +2,11 @@ import { APP_NAME } from './configs.js';
 import route from './fastify.js';
 import db from './db.js';
 
-function isDataExists(item, id = -1) {
+function isDataExists(name, id = -1) {
     return db.some((i, index) =>
-        index !== id && ((typeof i === "string" && typeof item === "string")
-            ? i.toLowerCase() === item.toLowerCase()
-            : i === item)
+        index !== id && ((typeof i.name === 'string' && typeof name === 'string')
+            ? i.name.toLowerCase() === name.toLowerCase()
+            : i.name === name)
     );
 }
 
@@ -21,7 +21,7 @@ route.get('/', async (req, res) => {
 
 route.get('/grocery', async (req, res) => {
     try {
-        return await res.status(201).send({
+        return await res.status(200).send({
             application: APP_NAME,
             message: db.length
                 ? 'Get all groceries success.'
@@ -39,24 +39,24 @@ route.get('/grocery', async (req, res) => {
 });
 
 route.post('/grocery', async (req, res) => {
-    const { item } = req.body || {};
+    const { name = '' } = req.body || {};
 
-    if (!item || typeof item !== "string") {
+    if (!name) {
         return res.status(400).send({
             application: APP_NAME,
-            message: "Invalid grocery item.",
+            message: 'Invalid name, cannot add new grocery item!',
         });
     }
 
-    if (isDataExists(item)) {
+    if (isDataExists(name)) {
         return res.status(400).send({
             application: APP_NAME,
-            message: `Cannot add '${item}', same grocery already exists!`,
+            message: `Cannot add '${name}', same grocery already exists!`,
         });
     }
 
     try {
-        db.push(item);
+        db.unshift({ name, done: false });
 
         return await res.status(201).send({
             application: APP_NAME,
@@ -75,31 +75,43 @@ route.post('/grocery', async (req, res) => {
 
 route.patch('/grocery/:id', async (req, res) => {
     const id = parseInt(req.params.id, 10);
-    const { item } = req.body || {};
+    const { name = '', done = false } = req.body || {};
 
-    if (!item || typeof item !== "string") {
+    if (name !== undefined && typeof name !== 'string') {
         return res.status(400).send({
             application: APP_NAME,
-            message: "Invalid grocery item.",
+            message: 'Invalid name, cannot edit grocery item!',
+        });
+    }
+
+    if (typeof done !== 'boolean') {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: 'Invalid "done" value. It must be a boolean!',
         });
     }
 
     if (isNaN(id) || id < 0 || id >= db.length) {
         return res.status(400).send({
             application: APP_NAME,
-            message: "Invalid grocery ID.",
+            message: 'Invalid grocery ID!',
         });
     }
 
-    if (isDataExists(item, id)) {
+    if (isDataExists(name, id)) {
         return res.status(400).send({
             application: APP_NAME,
-            message: `Cannot edit item to '${item}', same grocery already exists!`,
+            message:
+                `Cannot edit name to '${name}', same grocery already exists!`,
         });
     }
 
     try {
-        db[id] = item;
+        const data = { ...db[id] };
+        if (name) data.name = name;
+        data.done = done;
+
+        db[id] = { ...data };
 
         return await res.status(200).send({
             application: APP_NAME,
@@ -122,7 +134,7 @@ route.delete('/grocery/:id', async (req, res) => {
     if (isNaN(id) || id < 0 || id >= db.length) {
         return res.status(400).send({
             application: APP_NAME,
-            message: "Invalid grocery ID.",
+            message: 'Invalid grocery ID!',
         });
     }
 
