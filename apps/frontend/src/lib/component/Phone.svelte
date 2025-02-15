@@ -21,7 +21,7 @@
   });
 </script>
 
-<div class="flex flex-1 justify-center">
+<div class="flex justify-center">
   <div class="flex flex-col gap-[1.75em] pt-[6.75em] w-[.25em]">
     <div class="bg-gray-500 h-[1.75em] rounded-s-[.5em]"></div>
     <div class="flex flex-col gap-[1em] w-[.5em]">
@@ -41,10 +41,10 @@
       </div>
       <div class="bg-gray-700 w-[10em] pt-[1.75em] rounded-b-[1.5em] relative">
         <div
-          class="bg-gray-600 w-[4em] h-[.35em] rounded-[.35em] absolute top-[.25em] left-[3.5em]"
+          class="bg-gray-600 w-[4em] h-[.35em] rounded-[.35em] absolute top-[.25em] left-[3em]"
         ></div>
         <div
-          class="bg-blue-300/20 w-[.75em] aspect-square rounded-full absolute right-[2em] top-[.25em]"
+          class="bg-blue-300/20 w-[.75em] aspect-square rounded-full absolute top-[.25em] right-[1.75em]"
         ></div>
       </div>
       <div class="indicators flex-1 pt-[1.75em] text-center font-bold"></div>

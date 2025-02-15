@@ -1,5 +1,9 @@
 <script>
   import "../app.css";
+  import { page } from "$app/stores";
+  import { Toasts } from "svoast";
+
+  $: isValidStatusCode = $page.status >= 200 && $page.status < 300;
 </script>
 
 <svelte:head>
@@ -8,4 +12,9 @@
   </title>
 </svelte:head>
 
-<slot />
+{#if !isValidStatusCode}
+  <slot />
+{:else}
+  <slot />
+  <Toasts position={"bottom-center"} />
+{/if}
