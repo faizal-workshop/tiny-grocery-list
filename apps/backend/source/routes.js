@@ -2,6 +2,14 @@ import { APP_NAME } from './configs.js';
 import route from './fastify.js';
 import db from './db.js';
 
+function isDataExists(item, id = -1) {
+    return db.some((i, index) =>
+        index !== id && ((typeof i === "string" && typeof item === "string")
+            ? i.toLowerCase() === item.toLowerCase()
+            : i === item)
+    );
+}
+
 // Routes start here
 
 route.get('/', async (req, res) => {
@@ -15,8 +23,10 @@ route.get('/grocery', async (req, res) => {
     try {
         return await res.status(201).send({
             application: APP_NAME,
-            message: 'Get all groceries success.',
-            data: result,
+            message: db.length
+                ? 'Get all groceries success.'
+                : 'There is currently no grocery.',
+            data: db.length ? [...db] : undefined,
         });
     } catch (e) {
         console.error(e);
@@ -29,11 +39,29 @@ route.get('/grocery', async (req, res) => {
 });
 
 route.post('/grocery', async (req, res) => {
+    const { item } = req.body || {};
+
+    if (!item || typeof item !== "string") {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: "Invalid grocery item.",
+        });
+    }
+
+    if (isDataExists(item)) {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: `Cannot add '${item}', same grocery already exists!`,
+        });
+    }
+
     try {
-        return await res.status(200).send({
+        db.push(item);
+
+        return await res.status(201).send({
             application: APP_NAME,
             message: 'Add new grocery success.',
-            data: result,
+            data: [...db],
         });
     } catch (e) {
         console.error(e);
@@ -46,13 +74,37 @@ route.post('/grocery', async (req, res) => {
 });
 
 route.patch('/grocery/:id', async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id, 10);
+    const { item } = req.body || {};
+
+    if (!item || typeof item !== "string") {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: "Invalid grocery item.",
+        });
+    }
+
+    if (isNaN(id) || id < 0 || id >= db.length) {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: "Invalid grocery ID.",
+        });
+    }
+
+    if (isDataExists(item, id)) {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: `Cannot edit item to '${item}', same grocery already exists!`,
+        });
+    }
 
     try {
+        db[id] = item;
+
         return await res.status(200).send({
             application: APP_NAME,
             message: 'Update grocery success.',
-            data: result,
+            data: [...db],
         });
     } catch (e) {
         console.error(e);
@@ -64,14 +116,23 @@ route.patch('/grocery/:id', async (req, res) => {
     }
 });
 
-route.delete('/grocery/id', async (req, res) => {
-    const id = req.params.id;
+route.delete('/grocery/:id', async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+
+    if (isNaN(id) || id < 0 || id >= db.length) {
+        return res.status(400).send({
+            application: APP_NAME,
+            message: "Invalid grocery ID.",
+        });
+    }
 
     try {
+        db.splice(id, 1);
+
         return await res.status(200).send({
             application: APP_NAME,
             message: 'Delete grocery success.',
-            data: result,
+            data: [...db],
         });
     } catch (e) {
         console.error(e);
