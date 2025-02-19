@@ -1,4 +1,6 @@
 # Tiny Grocery List
+<img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" height="24" />
+
 A grocery list built to demonstrate a simple microservices architecture
 
 ![image](https://github.com/user-attachments/assets/8e10c3c4-30dc-4b11-a327-80b24485bac2)
