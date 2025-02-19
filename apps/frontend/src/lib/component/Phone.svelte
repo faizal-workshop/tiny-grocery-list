@@ -3,9 +3,9 @@
 
     export let size = 16;
 
-    let time = '--:--';
+    let time = '';
 
-    function updateTime() {
+    function timeFormatter() {
         const date = new Date();
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
@@ -13,10 +13,10 @@
         time = `${hours}:${minutes}`;
     }
 
-    onMount(() => {
-        updateTime();
+    timeFormatter();
 
-        const interval = setInterval(updateTime, 1000);
+    onMount(() => {
+        const interval = setInterval(timeFormatter, 1000);
         return () => clearInterval(interval);
     });
 </script>
