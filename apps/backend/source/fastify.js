@@ -11,7 +11,12 @@ const app = fastify({
 app.register(fastifyCors);
 
 app.register(fastifyHelmet, {
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            frameAncestors: ["'none'"],
+        },
+    },
     crossOriginOpenerPolicy: {
         policy: 'same-origin-allow-popups',
     },
