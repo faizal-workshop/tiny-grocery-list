@@ -20,7 +20,7 @@
     });
 </script>
 
-<main class="flex flex-1 flex-col justify-center items-center p-3">
+<main class="flex flex-1 flex-col justify-center items-center p-3 bg-blue-300">
     <Phone size={20}>
         {#if loading}
             <div
