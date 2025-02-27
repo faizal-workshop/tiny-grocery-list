@@ -5,7 +5,7 @@
 
 A grocery list built to demonstrate a simple microservices architecture
 
-![image](https://github.com/user-attachments/assets/8e10c3c4-30dc-4b11-a327-80b24485bac2)
+![image](https://github.com/user-attachments/assets/5100ff89-d6e8-4f11-88d1-2273120cc051)
 
 ## Features
 - Create, update, edit, and delete grocery items
