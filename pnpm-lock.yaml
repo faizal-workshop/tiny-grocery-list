@@ -61,8 +61,8 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9(vite@6.2.0(@types/node@22.13.0)(jiti@2.4.2)(lightningcss@1.29.1))
       daisyui:
-        specifier: 5.0.0-beta.8
-        version: 5.0.0-beta.8
+        specifier: 5.0.0
+        version: 5.0.0
       svelte:
         specifier: ^5.20.5
         version: 5.20.5
@@ -602,8 +602,8 @@ packages:
     resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
     engines: {node: '>=18'}
 
-  daisyui@5.0.0-beta.8:
-    resolution: {integrity: sha512-jSokqm5i+Pv1jG80wliNzMHjmcF+iMx5xRUpk0/QExVoVNyQNWeCsaWJQubPvUq7bt9nzSsQTR2uIZBoyIIoaA==}
+  daisyui@5.0.0:
+    resolution: {integrity: sha512-U0K9Bac3Bi3zZGm6ojrw12F0vBHTpEgf46zv/BYxLe07hF0Xnx7emIQliwaRBgJuYhY0BhwQ6wSnq5cJXHA2yA==}
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -1557,7 +1557,7 @@ snapshots:
 
   cookie@1.0.2: {}
 
-  daisyui@5.0.0-beta.8: {}
+  daisyui@5.0.0: {}
 
   debug@4.4.0:
     dependencies:
