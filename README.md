@@ -13,6 +13,7 @@ A grocery list built to demonstrate a simple microservices architecture
 - Lightweight, the database is just a simple array
 
 ## Stack Used
+- [Turborepo](https://turbo.build/)
 - [SvelteKit](https://svelte.dev/)
 - [Tailwind](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/)
