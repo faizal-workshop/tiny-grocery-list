@@ -2,8 +2,8 @@
     import axios from 'axios';
     import { toast } from 'svoast';
     import { Plus, Pen, Trash2 } from 'lucide-svelte';
-    import trimText from '$lib/trimText.js';
-    import toastConfig from '$lib/toastConfig.js';
+    import trimText from '$lib/trimText';
+    import toastConfig from '$lib/toastConfig';
 
     export let data;
 
