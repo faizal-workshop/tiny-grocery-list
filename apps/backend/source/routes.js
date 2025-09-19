@@ -29,7 +29,7 @@ route.get('/grocery', async (req, res) => {
             data: db.length ? [...db] : undefined,
         });
     } catch (e) {
-        console.error(e);
+        req.log.error(e);
 
         return await res.status(500).send({
             application: APP_NAME,
@@ -64,7 +64,7 @@ route.post('/grocery', async (req, res) => {
             data: [...db],
         });
     } catch (e) {
-        console.error(e);
+        req.log.error(e);
 
         return await res.status(500).send({
             application: APP_NAME,
@@ -119,7 +119,7 @@ route.patch('/grocery/:id', async (req, res) => {
             data: [...db],
         });
     } catch (e) {
-        console.error(e);
+        req.log.error(e);
 
         return await res.status(500).send({
             application: APP_NAME,
@@ -147,7 +147,7 @@ route.delete('/grocery/:id', async (req, res) => {
             data: [...db],
         });
     } catch (e) {
-        console.error(e);
+        req.log.error(e);
 
         return await res.status(500).send({
             application: APP_NAME,
