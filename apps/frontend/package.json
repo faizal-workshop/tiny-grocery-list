@@ -10,14 +10,14 @@
         "prepare": "svelte-kit sync || echo ''"
     },
     "devDependencies": {
-        "@sveltejs/adapter-node": "^5.3.2",
-        "@sveltejs/kit": "^2.42.2",
+        "@sveltejs/adapter-node": "^5.3.3",
+        "@sveltejs/kit": "^2.46.4",
         "@sveltejs/vite-plugin-svelte": "^5.1.1",
-        "@tailwindcss/vite": "^4.1.13",
+        "@tailwindcss/vite": "^4.1.14",
         "daisyui": "5.0.0",
-        "svelte": "^5.39.2",
+        "svelte": "^5.39.11",
         "svoast": "^3.0.3",
-        "tailwindcss": "^4.1.13",
+        "tailwindcss": "^4.1.14",
         "vite": "^6.3.6"
     },
     "dependencies": {
