@@ -96,7 +96,7 @@
     <hr class="my-2 border-gray-400" />
     {#each contents as item, i}
         <div
-            class="card flex flex-row items-center gap-2 mb-1 px-2 py-2 bg-white hover:bg-gray-100 transition duration-200 border-[1px] border-gray-300 shadow"
+            class="card flex flex-row items-center gap-2 mb-1 px-2 py-2 bg-white hover:bg-gray-100 transition duration-200 border-1 border-gray-300 shadow"
         >
             <label class="flex flex-1 items-center gap-2 cursor-pointer">
                 <input
