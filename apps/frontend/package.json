@@ -1,0 +1,29 @@
+{
+    "name": "frontend",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "prepare": "svelte-kit sync || echo ''"
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-node": "^5.5.4",
+        "@sveltejs/kit": "^2.53.4",
+        "@sveltejs/vite-plugin-svelte": "^5.1.1",
+        "@tailwindcss/vite": "^4.2.1",
+        "daisyui": "^5.5.19",
+        "svelte": "^5.53.10",
+        "svoast": "^3.0.3",
+        "tailwindcss": "^4.2.1",
+        "vite": "^6.4.1"
+    },
+    "dependencies": {
+        "@fontsource-variable/noto-sans": "^5.2.10",
+        "axios": "^1.13.6",
+        "dotenv": "^16.6.1",
+        "lucide-svelte": "^0.563.0"
+    }
+}

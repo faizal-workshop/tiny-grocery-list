@@ -1,0 +1,15 @@
+{
+    "name": "tiny-grocery-list",
+    "private": true,
+    "scripts": {
+        "dev": "turbo run dev",
+        "build": "turbo run build"
+    },
+    "devDependencies": {
+        "turbo": "^2.8.16"
+    },
+    "packageManager": "pnpm@10.6.5",
+    "engines": {
+        "node": ">=22"
+    }
+}
