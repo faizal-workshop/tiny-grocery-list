@@ -1,7 +1,7 @@
 <script>
     import '../app.css';
     import { page } from '$app/stores';
-    import { Toasts } from 'svoast';
+    import { Toaster } from 'svelte-sonner';
 </script>
 
 <svelte:head>
@@ -11,4 +11,12 @@
 </svelte:head>
 
 <slot />
-<Toasts position={'bottom-center'} />
+
+<Toaster
+    richColors
+    theme="system"
+    position="bottom-center"
+    toastOptions={{
+        style: 'font-size: 1rem;',
+    }}
+/>
