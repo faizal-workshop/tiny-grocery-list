@@ -34,7 +34,7 @@
         style="font-size: {size}px;"
     >
         <div
-            class="flex justify-center items-start px-[1.25em] bg-white leading-none text-[.65em] w-full absolute z-[100] left-0 top-0"
+            class="flex justify-center items-start px-[1.25em] bg-white leading-none text-[.65em] w-full absolute z-100 left-0 top-0"
         >
             <div class="flex-1 pt-[.5em] text-center text-[1.15em] font-bold">
                 {time}
