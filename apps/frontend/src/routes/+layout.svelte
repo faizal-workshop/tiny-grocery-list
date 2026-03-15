@@ -2,6 +2,8 @@
     import '../app.css';
     import { page } from '$app/stores';
     import { Toaster } from 'svelte-sonner';
+
+    let { children } = $props();
 </script>
 
 <svelte:head>
@@ -10,7 +12,7 @@
     </title>
 </svelte:head>
 
-<slot />
+{@render children()}
 
 <Toaster
     richColors
