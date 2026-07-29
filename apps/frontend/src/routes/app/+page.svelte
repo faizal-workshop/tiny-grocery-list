@@ -1,6 +1,6 @@
 <script>
     import axios from 'axios';
-    import { Plus, Pen, Trash2 } from 'lucide-svelte';
+    import { Plus, Pen, Trash2 } from '@lucide/svelte';
     import { toast } from 'svelte-sonner';
     import trimText from '$lib/trimText';
     import toastConfig from '$lib/toastConfig';
